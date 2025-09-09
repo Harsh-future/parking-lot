@@ -1,14 +1,15 @@
-package dtos;
+package models;
 
-import models.VehicleType;
-
-public class GenerateTicketRequestDto {
+public class Vehicle {
 
     private String vehicleNumber;
 
-    private long gateId;
-
     private VehicleType vehicleType;
+
+    //Owner details
+    private String name;
+
+    private String phoneNumber;
 
     public String getVehicleNumber() {
         return vehicleNumber;
@@ -18,19 +19,27 @@ public class GenerateTicketRequestDto {
         this.vehicleNumber = vehicleNumber;
     }
 
-    public long getGateId() {
-        return gateId;
-    }
-
-    public void setGateId(long gateId) {
-        this.gateId = gateId;
-    }
-
     public VehicleType getVehicleType() {
         return vehicleType;
     }
 
     public void setVehicleType(VehicleType vehicleType) {
         this.vehicleType = vehicleType;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
