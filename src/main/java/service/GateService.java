@@ -1,6 +1,7 @@
 package service;
 
 import models.Gate;
+import models.ParkingLot;
 import repositories.GateRepository;
 
 public class GateService {
@@ -11,7 +12,12 @@ public class GateService {
         this.gateRepository = gateRepository;
     }
 
-    public Gate getGate(long gateId){
-        return gateRepository.getGate(gateId);
+    public Gate getGateUsingGateId(long gateId){
+        return gateRepository.getGateUsingGateId(gateId);
+    }
+
+    public ParkingLot getParkingLotByGate(Gate gate){
+
+        return null;
     }
 }

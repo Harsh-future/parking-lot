@@ -4,20 +4,22 @@ import base.BaseEntity;
 
 public class Ticket extends BaseEntity {
 
-    private String vehicleNumber;
+    private Vehicle vehicle;
 
     private long entryTime;
 
     private Gate entryGate;
 
-    private ParkingLot parkingLot;
+    private Operator operator;
 
-    public String getVehicleNumber() {
-        return vehicleNumber;
+    private ParkingSlot parkingSlot;
+
+    public Vehicle getVehicleNumber() {
+        return vehicle;
     }
 
-    public void setVehicleNumber(String vehicleNumber) {
-        this.vehicleNumber = vehicleNumber;
+    public void setVehicleNumber(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     public long getEntryTime() {
@@ -36,11 +38,19 @@ public class Ticket extends BaseEntity {
         this.entryGate = entryGate;
     }
 
-    public ParkingLot getParkingLot() {
-        return parkingLot;
+    public ParkingSlot getParkingSlot() {
+        return parkingSlot;
     }
 
-    public void setParkingLot(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
+    public void setParkingSlot(ParkingSlot parkingSlot) {
+        this.parkingSlot = parkingSlot;
+    }
+
+    public Operator getOperator() {
+        return operator;
+    }
+
+    public void setOperator(Operator operator) {
+        this.operator = operator;
     }
 }

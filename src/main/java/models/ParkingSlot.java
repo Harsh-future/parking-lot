@@ -2,28 +2,30 @@ package models;
 
 import base.BaseEntity;
 
+import java.util.List;
+
 public class ParkingSlot extends BaseEntity {
 
-    public VehicleType vehicleType;
+    public List<VehicleType> supportedVehicleTypes;
 
-    public BaseStatus baseStatus;
+    public ParkingSlotStatus parkingSlotStatus;
 
     public int slotNumber;
 
-    public VehicleType getVehicleType() {
-        return vehicleType;
+    public List<VehicleType> getSupportedVehicleTypes() {
+        return supportedVehicleTypes;
     }
 
-    public void setVehicleType(VehicleType vehicleType) {
-        this.vehicleType = vehicleType;
+    public void setSupportedVehicleTypes(List<VehicleType> supportedVehicleTypes) {
+        this.supportedVehicleTypes = supportedVehicleTypes;
     }
 
-    public BaseStatus getParkingSlotStatus() {
-        return baseStatus;
+    public ParkingSlotStatus getParkingSlotStatus() {
+        return parkingSlotStatus;
     }
 
-    public void setParkingSlotStatus(BaseStatus baseStatus) {
-        this.baseStatus = baseStatus;
+    public void setParkingSlotStatus(ParkingSlotStatus parkingSlotStatus) {
+        this.parkingSlotStatus = parkingSlotStatus;
     }
 
     public int getSlotNumber() {

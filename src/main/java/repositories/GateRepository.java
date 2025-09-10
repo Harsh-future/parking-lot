@@ -4,7 +4,7 @@ import models.Gate;
 
 public class GateRepository {
 
-    public Gate getGate(long gateId){
+    public Gate getGateUsingGateId(long gateId){
         return null;
     }
 }
