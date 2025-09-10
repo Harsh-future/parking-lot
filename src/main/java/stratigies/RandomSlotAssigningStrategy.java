@@ -22,12 +22,15 @@ public class RandomSlotAssigningStrategy implements ParkingSlotStrategy{
 
         List<ParkingSlot> parkingSlotList = parkingSlotService.getAllParkingSlotByParkingLot(parkingLot);
 
-        for(ParkingSlot parkingSlot : parkingSlotList){
-            if(parkingSlot.parkingSlotStatus.equals(ParkingSlotStatus.AVAILABLE)
-                && parkingSlot.getSupportedVehicleTypes().contains(vehicleType)){
-                return parkingSlot;
+        if(parkingSlotList != null){
+            for(ParkingSlot parkingSlot : parkingSlotList){
+                if(parkingSlot.parkingSlotStatus.equals(ParkingSlotStatus.AVAILABLE)
+                        && parkingSlot.getSupportedVehicleTypes().contains(vehicleType)){
+                    return parkingSlot;
+                }
             }
         }
+
 
         return null;
     }
