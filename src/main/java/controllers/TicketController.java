@@ -2,6 +2,8 @@ package controllers;
 
 import dtos.GenerateTicketRequestDto;
 import dtos.GenerateTicketResponseDto;
+import Utils.ResponseStatus;
+import exceptions.ParkingSlotNotFoundException;
 import models.Ticket;
 import service.TicketService;
 
@@ -27,12 +29,19 @@ public class TicketController {
             2. It should only do the work as the name suggests, rest of the things should be done by service.
          */
 
-        Ticket ticket = ticketService.getTicket(requestDto.getVehicleNumber(), requestDto.getVehicleType(), requestDto.getGateId());
-
         GenerateTicketResponseDto responseDto = new GenerateTicketResponseDto();
-        responseDto.setTicket(ticket);
 
-        return null;
+        try{
+            Ticket ticket = ticketService.getTicket(requestDto.getVehicleNumber(), requestDto.getVehicleType(), requestDto.getGateId());
+            responseDto.setTicket(ticket);
+            responseDto.setResponseStatus(ResponseStatus.SUCCESS);
+        }
+        catch(ParkingSlotNotFoundException parkingSlotNotFoundException){
+            responseDto.setResponseStatus(ResponseStatus.FAILURE);
+            System.out.println("Ticket not generated due to Parking slot not available for your type of vehicle.");
+        }
+
+        return responseDto;
     }
 
 

@@ -1,5 +1,6 @@
 package dtos;
 
+import Utils.ResponseStatus;
 import models.Ticket;
 
 public class GenerateTicketResponseDto {

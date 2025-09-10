@@ -1,5 +1,6 @@
 package service;
 
+import exceptions.ParkingSlotNotFoundException;
 import models.*;
 import stratigies.ParkingSlotStrategy;
 
@@ -15,7 +16,7 @@ public class TicketService {
         this.parkingSlotStrategy = parkingSlotStrategy;
     }
 
-    public Ticket getTicket(String vehicleNumber, VehicleType vehicleType, Long gateId){
+    public Ticket getTicket(String vehicleNumber, VehicleType vehicleType, Long gateId) throws ParkingSlotNotFoundException{
 
         Vehicle vehicle = vehicleService.getVehicle(vehicleNumber);
 
@@ -35,6 +36,7 @@ public class TicketService {
         if(parkingSlot == null) {
             //no parking spot is available
             // throw exception
+            throw new ParkingSlotNotFoundException("ParkingSlot Not Available");
         }
 
         ticket.setParkingSlot(parkingSlot);
