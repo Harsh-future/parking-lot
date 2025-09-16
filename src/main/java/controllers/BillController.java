@@ -5,7 +5,6 @@ import dtos.BillRequestDto;
 import dtos.GenerateBillResponseDto;
 import exceptions.TicketNotFoundException;
 import models.Bill;
-import models.Ticket;
 import service.BillService;
 
 public class BillController {
