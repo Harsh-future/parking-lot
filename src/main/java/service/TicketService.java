@@ -50,11 +50,6 @@ public class TicketService {
 
     public Ticket getTicketByTicketId(long ticketId) throws TicketNotFoundException {
 
-        Ticket  ticket = ticketRepository.getTicketByTicketId(ticketId);
-
-        if(ticket == null){
-            throw new TicketNotFoundException(" Ticket not found, Fraud Ticket Reported");
-        }
-        return ticket;
+        return ticketRepository.getTicketByTicketId(ticketId);
     }
 }

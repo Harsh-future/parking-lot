@@ -1,5 +1,6 @@
 package controllers;
 
+import Utils.ResponseStatus;
 import dtos.BillRequestDto;
 import dtos.GenerateBillResponseDto;
 import exceptions.TicketNotFoundException;
@@ -15,13 +16,19 @@ public class BillController {
         this.billService = billService;
     }
 
-    public GenerateBillResponseDto getBill(BillRequestDto billRequestDto) throws TicketNotFoundException {
+    public GenerateBillResponseDto getBill(BillRequestDto billRequestDto) {
 
         GenerateBillResponseDto billResponseDto = new GenerateBillResponseDto();
 
-        Bill bill = billService.calculateBill(billRequestDto.getTicketId());
+        try{
 
-        billResponseDto.setBill(bill);
+            Bill bill = billService.calculateBill(billRequestDto.getTicketId());
+            billResponseDto.setBill(bill);
+
+        } catch (TicketNotFoundException ticketNotFoundException) {
+            billResponseDto.setResponseStatus(ResponseStatus.FAILURE);
+            System.out.println("Bill not generated cause ticket not found. May be ticket is fraudulent");
+        }
 
         // add logic for status handling
         return billResponseDto;

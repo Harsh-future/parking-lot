@@ -1,4 +1,6 @@
 package stratigies;
 
-public class BillCalculationStrategy {
+public interface BillCalculationStrategy {
+
+    double calculateBill(long time);
 }

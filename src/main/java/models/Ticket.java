@@ -14,11 +14,11 @@ public class Ticket extends BaseEntity {
 
     private ParkingSlot parkingSlot;
 
-    public Vehicle getVehicleNumber() {
+    public Vehicle getVehicle() {
         return vehicle;
     }
 
-    public void setVehicleNumber(Vehicle vehicle) {
+    public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
 
