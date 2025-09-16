@@ -1,7 +1,9 @@
 package service;
 
 import exceptions.ParkingSlotNotFoundException;
+import exceptions.TicketNotFoundException;
 import models.*;
+import repositories.TicketRepository;
 import stratigies.ParkingSlotStrategy;
 
 public class TicketService {
@@ -9,11 +11,14 @@ public class TicketService {
     private final VehicleService vehicleService;
     private final GateService gateService;
     private final ParkingSlotStrategy parkingSlotStrategy;
+    private final TicketRepository ticketRepository;
 
-    public TicketService(VehicleService vehicleService, GateService gateService, ParkingSlotStrategy parkingSlotStrategy){
+    public TicketService(VehicleService vehicleService, GateService gateService
+            , ParkingSlotStrategy parkingSlotStrategy, TicketRepository  ticketRepository){
         this.vehicleService = vehicleService;
         this.gateService = gateService;
         this.parkingSlotStrategy = parkingSlotStrategy;
+        this.ticketRepository = ticketRepository;
     }
 
     public Ticket getTicket(String vehicleNumber, VehicleType vehicleType, Long gateId) throws ParkingSlotNotFoundException{
@@ -41,5 +46,15 @@ public class TicketService {
 
         ticket.setParkingSlot(parkingSlot);
         return null;
+    }
+
+    public Ticket getTicketByTicketId(long ticketId) throws TicketNotFoundException {
+
+        Ticket  ticket = ticketRepository.getTicketByTicketId(ticketId);
+
+        if(ticket == null){
+            throw new TicketNotFoundException(" Ticket not found, Fraud Ticket Reported");
+        }
+        return ticket;
     }
 }

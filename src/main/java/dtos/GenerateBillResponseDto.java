@@ -1,21 +1,21 @@
 package dtos;
 
 import Utils.ResponseStatus;
-import models.Ticket;
+import models.Bill;
 
-public class GenerateTicketResponseDto {
+public class GenerateBillResponseDto {
 
-    private Ticket ticket;
+    private Bill bill;
 
     private ResponseStatus responseStatus;
 
+    public Bill getBill() {
 
-    public Ticket getTicket() {
-        return ticket;
+        return bill;
     }
 
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
+    public void setBill(Bill bill) {
+        this.bill = bill;
     }
 
     public ResponseStatus getResponseStatus() {

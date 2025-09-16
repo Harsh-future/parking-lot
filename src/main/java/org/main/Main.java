@@ -6,10 +6,7 @@ import dtos.GenerateTicketRequestDto;
 import dtos.GenerateTicketResponseDto;
 import models.Ticket;
 import models.VehicleType;
-import repositories.GateRepository;
-import repositories.ParkingLotRepository;
-import repositories.ParkingSlotRepository;
-import repositories.VehicleRepository;
+import repositories.*;
 import service.*;
 import stratigies.ParkingSlotStrategy;
 import stratigies.RandomSlotAssigningStrategy;
@@ -31,9 +28,10 @@ public class Main {
 
         VehicleRepository vehicleRepository = new VehicleRepository();
         VehicleService vehicleService = new VehicleService(vehicleRepository);
+        TicketRepository ticketRepository = new TicketRepository();
 
         ParkingSlotStrategy parkingSlotStrategy = new RandomSlotAssigningStrategy(parkingSlotService,parkingLotService);
-        TicketService ticketService = new TicketService(vehicleService,gateService,parkingSlotStrategy);
+        TicketService ticketService = new TicketService(vehicleService,gateService,parkingSlotStrategy,ticketRepository);
 
         objectContainer.register("ticketService",ticketService);
         objectContainer.register("vehicleService",vehicleService);

@@ -1,5 +1,6 @@
 package service;
 
+import exceptions.ParkingLotNotFoundException;
 import models.Gate;
 import models.ParkingLot;
 import models.ParkingSlot;
@@ -17,6 +18,19 @@ public class ParkingLotService {
 
     public ParkingLot getParkingLotByGate(Gate gate){
         return parkingLotRepository.getParkingLotByGate(gate);
+    }
+
+    public void addParkingLot(ParkingLot parkingLot){
+        parkingLotRepository.addParkingLot(parkingLot);
+    }
+
+    public ParkingLot getParkingLotById(long parkingLotId) throws ParkingLotNotFoundException {
+        ParkingLot parkingLot = parkingLotRepository.getParkingLotById(parkingLotId);
+
+        if(parkingLot == null){
+            throw new ParkingLotNotFoundException("Parking Lot not found!");
+        }
+        return parkingLot;
     }
 
 }

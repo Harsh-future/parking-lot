@@ -1,11 +1,10 @@
 package repositories;
 
+import exceptions.ParkingLotNotFoundException;
 import models.Gate;
 import models.ParkingLot;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ParkingLotRepository {
@@ -26,5 +25,13 @@ public class ParkingLotRepository {
             }
         }
         return null;
+    }
+
+    public void addParkingLot(ParkingLot parkingLot){
+        parkingLotList.put(parkingLot.getId(),parkingLot);
+    }
+
+    public ParkingLot getParkingLotById(Long parkingLotId){
+        return parkingLotList.getOrDefault(parkingLotId, null);
     }
 }
